@@ -105,8 +105,6 @@ public class Main {
                     }
                     System.out.println();
                 }
-                System.out.println("-----------division------------");
-
                 for (int i = 0; i < arr1.length; i++) {
                     for (int j = 0; j < arr2[0].length; j++) {
                         sum[i][j] = 0; // initialize
