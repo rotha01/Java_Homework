@@ -1,128 +1,105 @@
 import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args) {
-//        int[][] arr1 ={
-//                {1,2},
-//                {3,4}
-//        };
-//        int[][] arr2 = {
-//                {5,6},
-//                {7,8}
-//        };
+class MatrixOperation {
 
-        int[][] arr1 ;
-        int[][] arr2 ;
-        //User input
-        Scanner sc = new Scanner(System.in);
-        System.out.println("---------- Matrix Array -----------");
-        System.out.print("Please enter the size of the array 1(row) :");
-        int sizeOfarr1Row = sc.nextInt();
-        System.out.print("Please enter the size of the array 1(column) : ");
-        int sizeOfarr1Colmn = sc.nextInt();
+    // Function to input matrix
+    public static int[][] inputMatrix(Scanner sc, int rows, int cols, String name) {
+        int[][] matrix = new int[rows][cols];
 
-        System.out.print("Please enter the size of the array 2(row) : ");
-        int sizeOfarr2Row = sc.nextInt();
-        System.out.print("Please enter the size of the array 2(column) : ");
-        int sizeOfarr2Colmn = sc.nextInt();
-
-        arr1 = new int[sizeOfarr1Row][sizeOfarr1Colmn];
-        arr2 = new int[sizeOfarr2Row][sizeOfarr2Colmn];
-
-
-
-        if(arr1.length != arr2.length){
-            System.out.println("The arrays are not equal");
-
-        }else{
-            System.out.println("Please enter numbers for first array:");
-            for (int i = 0; i < sizeOfarr1Row; i++) {
-                for (int j = 0; j < sizeOfarr1Colmn; j++) {
-                    System.out.print("Enter number for first array[" + i + "][" + j + "]: ");
-                    arr1[i][j] = sc.nextInt();
-                }
+        System.out.println("Enter values for " + name + ":");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print(name + "[" + i + "][" + j + "]: ");
+                matrix[i][j] = sc.nextInt();
             }
-            System.out.println("Array 1 is ");
-            for(int i = 0 ; i < arr1.length ; i++){
-                for(int j = 0 ; j < arr1[i].length ; j++){
-                    System.out.print(arr1[i][j] + " ");
-                }
-                System.out.println();
-            }
-
-            System.out.println("--------------------------------");
-
-            System.out.println("Please enter numbers for second array:");
-            for (int i = 0; i < sizeOfarr2Row; i++) {
-                for (int j = 0; j < sizeOfarr2Colmn; j++) {
-                    System.out.print("Enter number for second array[" + i + "][" + j + "]: ");
-                    arr2[i][j] = sc.nextInt();
-                }
-            }
-            System.out.println("Array 2 is ");
-            for(int i = 0 ; i < arr2.length ; i++){
-                for(int j = 0 ; j < arr2[i].length ; j++){
-                    System.out.print(arr2[i][j] + " ");
-                }
-                System.out.println();
-            }
-
-            int[][] sum = new int[sizeOfarr1Row][sizeOfarr1Colmn];
-
-            System.out.println("-----------sum------------");
-            for (int i = 0; i < arr1.length; i++) {
-                for (int j = 0; j < arr1[i].length; j++) {
-                    sum[i][j] = arr1[i][j] + arr2[i][j];
-                    System.out.print(sum[i][j] + " ");
-                }
-                System.out.println();
-            }
-
-            System.out.println("-----------minus------------");
-            for (int i = 0; i < arr1.length; i++) {
-                for (int j = 0; j < arr1[i].length; j++) {
-                    sum[i][j] = arr1[i][j] - arr2[i][j];
-                    System.out.print(sum[i][j] + " ");
-                }
-                System.out.println();
-            }
-
-            if (arr1[0].length != arr2.length) {
-                System.out.println("Matrix multiplication not possible!");
-                return;
-            }else{
-                System.out.println("-----------multiply------------");
-
-                for (int i = 0; i < arr1.length; i++) {
-                    for (int j = 0; j < arr2[0].length; j++) {
-                        sum[i][j] = 0; // initialize
-
-                        for (int k = 0; k < arr1[0].length; k++) {
-                            sum[i][j] += arr1[i][k] * arr2[k][j];
-                        }
-
-                        System.out.print(sum[i][j] + " ");
-                    }
-                    System.out.println();
-                }
-                System.out.println("-----------division------------");
-
-                for (int i = 0; i < arr1.length; i++) {
-                    for (int j = 0; j < arr2[0].length; j++) {
-                        sum[i][j] = 0; // initialize
-
-                        for (int k = 0; k < arr1[0].length; k++) {
-                            sum[i][j] += arr1[i][k] * arr2[k][j];
-                        }
-
-                        System.out.print(sum[i][j] + " ");
-                    }
-                    System.out.println();
-                }
-
-
-            }
-
         }
+        return matrix;
+    }
+
+    // Function to display matrix
+    public static void printMatrix(int[][] matrix, String name) {
+        System.out.println(name + " is:");
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    // Function for addition
+    public static void addMatrix(int[][] a, int[][] b) {
+        System.out.println("------ Sum ------");
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[i].length; j++) {
+                System.out.print((a[i][j] + b[i][j]) + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    // Function for subtraction
+    public static void subtractMatrix(int[][] a, int[][] b) {
+        System.out.println("------ Minus ------");
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[i].length; j++) {
+                System.out.print((a[i][j] - b[i][j]) + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    // Function for multiplication
+    public static void multiplyMatrix(int[][] a, int[][] b) {
+        if (a[0].length != b.length) {
+            System.out.println("Matrix multiplication not possible!");
+            return;
+        }
+
+        int[][] result = new int[a.length][b[0].length];
+
+        System.out.println("------ Multiply ------");
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < b[0].length; j++) {
+                for (int k = 0; k < a[0].length; k++) {
+                    result[i][j] += a[i][k] * b[k][j];
+                }
+                System.out.print(result[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("---------- Matrix Array -----------");
+
+        System.out.print("Enter rows for array 1: ");
+        int r1 = sc.nextInt();
+        System.out.print("Enter columns for array 1: ");
+        int c1 = sc.nextInt();
+
+        System.out.print("Enter rows for array 2: ");
+        int r2 = sc.nextInt();
+        System.out.print("Enter columns for array 2: ");
+        int c2 = sc.nextInt();
+
+        if (r1 != r2 || c1 != c2) {
+            System.out.println("Addition/Subtraction not possible (different sizes)");
+        }
+
+        int[][] arr1 = inputMatrix(sc, r1, c1, "Array1");
+        int[][] arr2 = inputMatrix(sc, r2, c2, "Array2");
+
+        printMatrix(arr1, "Array1");
+        printMatrix(arr2, "Array2");
+
+        if (r1 == r2 && c1 == c2) {
+            addMatrix(arr1, arr2);
+            subtractMatrix(arr1, arr2);
+        }
+
+        multiplyMatrix(arr1, arr2);
     }
 }
