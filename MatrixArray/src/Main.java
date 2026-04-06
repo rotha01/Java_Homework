@@ -157,7 +157,7 @@ import java.util.Scanner;
                     break;
 
                 case 6:
-                    System.out.println("Exiting program... 👋");
+                    System.out.println("Exiting program...");
                     break;
 
                 default:
